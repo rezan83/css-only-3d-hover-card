@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --perspective: 800px;
+    --rotation-degree: 25deg;
+}
+body {
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+}
+
+.card-wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 30rem;
+    height: 40rem;
+}
+.card-content {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    box-shadow: 20px 20px 20px hsl(0, 0%, 0%);
+    background-image: url(pic.jpg);
+    background-position: center;
+    background-size: cover;
+    transition: 1s;
+    transform-style: preserve-3d;
+    z-index: 1;
+}
+
+.hover-grid {
+    position: absolute;
+    z-index: 10;
+    width: 33.2%;
+    height: 33.2%;
+}
+
+/* 2, 5, 8 */
+.hover-grid:nth-child(3n + 2) {
+    left: 33%;
+}
+/* 3, 6, 9 */
+.hover-grid:nth-child(3n) {
+    left: 66%;
+}
+/* 4, 5, 6 .. */
+.hover-grid:nth-child(n + 4) {
+    top: 33%;
+}
+/* 7, 8, 9 */
+.hover-grid:nth-child(n + 7) {
+    top: 66%;
+}
+
+.hover-grid:nth-child(1):hover ~ .card-content {
+    transform: perspective(var(--perspective))
+        rotate3d(1, -1, 0, var(--rotation-degree));
+}
+.hover-grid:nth-child(2):hover ~ .card-content {
+    transform: perspective(var(--perspective))
+        rotate3d(1, 0, 0, var(--rotation-degree));
+}
+.hover-grid:nth-child(3):hover ~ .card-content {
+    transform: perspective(var(--perspective))
+        rotate3d(1, 1, 0, var(--rotation-degree));
+}
+.hover-grid:nth-child(4):hover ~ .card-content {
+    transform: perspective(var(--perspective))
+        rotate3d(0, -1, 0, var(--rotation-degree));
+}
+/* nothing for 5 which is mid of card */
+/* .hover-grid:nth-child(5):hover ~ .card-content {
+} */
+.hover-grid:nth-child(6):hover ~ .card-content {
+    transform: perspective(var(--perspective))
+        rotate3d(0, 1, 0, var(--rotation-degree));
+}
+.hover-grid:nth-child(7):hover ~ .card-content {
+    transform: perspective(var(--perspective))
+        rotate3d(-1, -1, 0, var(--rotation-degree));
+}
+.hover-grid:nth-child(8):hover ~ .card-content {
+    transform: perspective(var(--perspective))
+        rotate3d(-1, 0, 0, var(--rotation-degree));
+}
+.hover-grid:nth-child(9):hover ~ .card-content {
+    transform: perspective(var(--perspective))
+        rotate3d(-1, 1, 0, var(--rotation-degree));
+}
