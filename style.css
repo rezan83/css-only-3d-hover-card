@@ -28,7 +28,7 @@ body {
     display: grid;
     place-content: center;
     text-align: center;
-    box-shadow: 20px 20px 20px hsl(0, 0%, 0%);
+    box-shadow: 20px 20px 20px hsl(0, 0%, 49%);
     background-image: url(pic.jpg);
     background-position: center;
     background-size: cover;
